@@ -1,4 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+@mixin center_block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .App {
-  margin: 50px auto;
   text-align: center;
+  font-family: "Montserrat", serif;
+}
+
+.AppDark {
+  background-color: #1E1E1E;
+  color: white;
+
+  .search {
+    border: 2px solid white;
+    background-color: #1E1E1E;
+    color: #666666
+  }
+}
+
+.AppWhite {
+  background-color: white;
+
+}
+
+.todolist_container {
+  margin: 80px auto;
+  width: 795px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.line_one_row {
+  width: 100%;
+}
+
+.input_search {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.search {
+  width: 565px;
+  height: 38px;
+  border: 2px solid #6C63FF;
+  padding: 0 0 0 15px;
+  font-family: "Inter";
+  font-size: 16px;
+  color: #C3C1E5;
+  border-radius: 10px;
+
+}
+
+.choosen {
+  width: 85px;
+  height: 38px;
+  background-color: #6C63FF;
+  border-radius: 5px;
+  border: none;
+}
+
+.display {
+  width: 38px;
+  height: 38px;
+  background-color: #6C63FF;
+  border-radius: 5px;
+  border: none;
+}
+
+.tasks_group {
+  margin: 15px 0 0 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.task {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0 10px 0;
+}
+
+.left,
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.right {
+  width: 30%;
+}
+
+.left {
+  width: 70%;
+  justify-content: left;
+}
+
+.left h2 {
+  margin: 0 0 0 15px;
+}
+
+.right img {
+  margin: 0 5px 0 5px;
+  cursor: pointer;
+  cursor: url('./img/cursor.png'), pointer;
+}
+
+.check {
+  width: 26px;
+  height: 26px;
+  border: 1px solid #6C63FF;
+  border-radius: 2px;
+  cursor: pointer;
+  cursor: url('./img/cursor.png'), pointer;
+}
+
+.choosen {
+  width: 150px;
+  @include center_block();
+
+  p {
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    margin: 0 18px 0 0;
+  }
+}
+
+.filter_task {
+
+  text-align: left;
+
+  p {
+    margin: 5px 0 4px 5px;
+    color: #6C63FF;
+    font-weight: 600;
+  }
+}
+
+.filter_task:hover {
+  background-color: #6b63ff62;
+  cursor: pointer;
+}
+
+
+.container_open{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  height: 84px;
+  border-radius:5px;
+  border: 1px solid #6C63FF;
+}
+
+
+.display {
+  @include center_block();
+}
+
+.new_task_line {
+  margin: 200px 0 0 0;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.addtask {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6C63FF;
+  cursor: pointer;
+  cursor: url('./img/cursor.png'), pointer;
+
 }
