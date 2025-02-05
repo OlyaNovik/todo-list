@@ -8,24 +8,36 @@ import vector from "./img/vector.svg"
 import { useState } from 'react';
 import Modal from './Components/Modal.jsx';
 import emptyImg from "./img/empty.png"
+import checkImg from "./img/done.svg"
 function App() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tasks, setTasks] = useState([]);
 
+
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
   const handleApplyModal = (inputValue) => {
-    console.log(inputValue);
-    setTasks((prevTasks) => [...prevTasks, inputValue]);
-    console.log(tasks);
-    console.log('Note applied:', inputValue);
+    if (inputValue === '') {
+      alert('Empty text')
+    }
+    else {
+      setTasks((prevTasks) => [...prevTasks, { text: inputValue, isChecked: false }]);
+      console.log(tasks);
+    }
   };
 
-  const [disaplay, SetDisplay] = useState('AppDark')
+  const [disaplay, SetDisplay] = useState('AppWhite')
   const [open, setOpen] = useState('close')
   const [textfilter, setTextFilter] = useState('ALL')
+  const filteredTasks = tasks.filter((task) => {
+    if (textfilter === 'Complete') return task.isChecked;
+    if (textfilter === 'Incomplete') return !task.isChecked;
+    return true; 
+  });
+
+
   const handleDisplayChange = () => {
     const newMode = disaplay === 'AppDark' ? 'AppWhite' : 'AppDark';
     document.body.className = newMode;
@@ -35,9 +47,23 @@ function App() {
     const click = open === 'open' ? 'close' : 'open';
     setOpen(click)
   }
-  const handleFilterChange = (value) => {  
-    setTextFilter(value)
+  const handleFilterChange = (value) => {
+    setTextFilter(value);
+    console.log(filteredTasks);
+
+
   }
+
+  const handleCheckDone = (index) => {
+    console.log(index);
+    setTasks((prevTasks) =>
+      prevTasks.map((task, i) =>
+        i === index ? { ...task, isChecked: !task.isChecked } : task
+      )
+    );
+    console.log(tasks);
+  };
+
   return (
     <div className="App">
       <div className="todolist_container">
@@ -59,17 +85,22 @@ function App() {
           </div>
         </div>
         <div className="tasks_group">
-          {tasks.length === 0 && (
+          {filteredTasks.length === 0 && (
             <div className="empty-state">
               <img src={emptyImg} alt="No tasks" />
               <h3>Empty...</h3>
             </div>
           )}
-          {tasks.map((note, index) => (
+          {filteredTasks.map((task, index) => (
             <div key={index} className="task">
               <div className="left">
-                <div className="check"></div>
-                <h2>{note}</h2>
+                <div
+                  onClick={() => handleCheckDone(index)}
+                  className={task.isChecked ? "checkDone" : "check"}
+                >
+                  <img src={checkImg} alt="" />
+                </div>
+                <h2 className={task.isChecked ? "Line" : "nanLine"}>{task.text}</h2>
               </div>
               <div className="right">
                 <img src={editSvg} alt="" />

@@ -21,6 +21,9 @@
     background-color: #1E1E1E;
     color: #666666
   }
+  .modal-content {
+    background: #1E1E1E;
+  }
 }
 
 .AppWhite {
@@ -66,6 +69,7 @@
   background-color: #6C63FF;
   border-radius: 5px;
   border: none;
+  text-transform: uppercase;
 }
 
 .display {
@@ -108,8 +112,14 @@
   justify-content: left;
 }
 
-.left h2 {
+.left .nanLine {
   margin: 0 0 0 15px;
+}
+
+.Line {
+  margin: 0 0 0 15px;
+  color: #777575;
+  text-decoration: line-through;
 }
 
 .right img {
@@ -125,6 +135,26 @@
   border-radius: 2px;
   cursor: pointer;
   cursor: url('./img/cursor.png'), pointer;
+
+  img {
+    display: none;
+  }
+}
+
+.checkDone {
+  width: 26px;
+  height: 26px;
+  border-radius: 2px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: url('./img/cursor.png'), pointer;
+  background-color: #6C63FF;
+
+  img {
+    display: block;
+  }
 }
 
 .choosen {
@@ -156,13 +186,13 @@
 }
 
 
-.container_open{
+.container_open {
   position: absolute;
   display: flex;
   flex-direction: column;
   width: 150px;
   height: 84px;
-  border-radius:5px;
+  border-radius: 5px;
   border: 1px solid #6C63FF;
 }
 
